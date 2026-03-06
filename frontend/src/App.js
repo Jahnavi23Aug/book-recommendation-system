@@ -10,14 +10,14 @@ const [filteredBooks, setFilteredBooks] = useState([]);
 const [loading, setLoading] = useState(false);
 const [error, setError] = useState("");
 
-// Load all books when app starts
+// Load books when app starts
 useEffect(() => {
 
 ```
 fetch("https://book-recommendation-system-k1q6.onrender.com/books")
-  .then(res => res.json())
-  .then(data => setAllBooks(data))
-  .catch(err => console.log(err));
+  .then((res) => res.json())
+  .then((data) => setAllBooks(data))
+  .catch((err) => console.log(err));
 
 // Example trending books
 setRecommendations([
@@ -46,6 +46,7 @@ setRecommendations([
 
 }, []);
 
+// Get recommendations
 const getRecommendations = async () => {
 
 ```
@@ -84,10 +85,8 @@ try {
   }
 
 } catch (error) {
-
   console.log(error);
   setError("Server error. Backend may be sleeping, please try again.");
-
 }
 
 setLoading(false);
@@ -110,7 +109,7 @@ return ( <div className="container">
         const value = e.target.value;
         setBook(value);
 
-        const suggestions = allBooks.filter(title =>
+        const suggestions = allBooks.filter((title) =>
           title.toLowerCase().includes(value.toLowerCase())
         );
 
@@ -141,21 +140,18 @@ return ( <div className="container">
 
   </div>
 
-  {/* Loading Spinner */}
+  {/* Loading */}
   {loading && <div className="loader"></div>}
 
-  {/* Error Message */}
+  {/* Error */}
   {error && <p className="error">{error}</p>}
 
   <div className="book-grid">
 
     {recommendations.map((item, index) => (
       <div key={index} className="card">
-
         <img src={item.image_url_m} alt="book" />
-
         <p>{item.book_title}</p>
-
       </div>
     ))}
 
