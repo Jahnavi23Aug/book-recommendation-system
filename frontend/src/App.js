@@ -13,7 +13,7 @@ function App() {
   // Load all books when app starts
   useEffect(() => {
 
-  fetch("http://127.0.0.1:5000/books")
+  fetch("https://book-recommendation-system-k1q6.onrender.com/books")
     .then(res => res.json())
     .then(data => setAllBooks(data))
     .catch(err => console.log(err));
@@ -57,7 +57,7 @@ function App() {
 
     try {
 
-      const response = await fetch("http://127.0.0.1:5000/recommend", {
+     const response = await fetch("https://book-recommendation-system-k1q6.onrender.com/recommend", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
